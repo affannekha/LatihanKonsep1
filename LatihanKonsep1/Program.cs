@@ -72,9 +72,44 @@ Console.WriteLine("statisik awal");
 wizardA.showtats();
 wizardB.showtats();
 
-wizardA.attack(wizardB);
-wizardB.attack(wizardA);
-wizardA.attack(wizardB);
+string pilihan;
+
+while (true)
+{
+    Console.WriteLine($"1. {wizardA.Name}menyerang {wizardB.Name} ");
+    Console.WriteLine($"2. {wizardB.Name}menyerang {wizardA.Name} ");
+    Console.WriteLine($"3. {wizardB.Name} melakukan heal");
+    Console.WriteLine($"4. {wizardA.Name} melakukan heal");
+
+    Console.Write("\nPilihanmu (1/2/3/4): ");
+    pilihan = Console.ReadLine();
+
+    if (pilihan == "1") wizardA.attack(wizardB);
+    else if (pilihan == "2") wizardB.attack(wizardA);
+    else if (pilihan == "3") wizardB.Heal();
+    else if (pilihan == "4") wizardA.Heal();
+    else Console.WriteLine("pilihanmu tidak valid");
+
+    if (wizardA.Energy <= 0 || wizardB.Energy <= 0) ;
+    {
+        if (wizardA.Energy > wizardB.Energy)
+        {
+            Console.WriteLine($"{wizardB.Name} keluar sebagai pemenangnya!");
+            Console.WriteLine($"{wizardA.Name} berhasil dikalahkan!");
+        }
+        else 
+        { 
+            Console.WriteLine($"{wizardB.Name}berhasil dikalahkan!");
+            Console.WriteLine($"{wizardA.Name} keluar sebagai pemenangnya!");
+        }
+
+        break;
+    }
+}
+//wizardA.attack(wizardB);
+//wizardB.attack(wizardA);
+//wizardA.attack(wizardB);
+//wizardB.Heal();
 
 Console.WriteLine("permainan selesai\n");
 Console.WriteLine("statisik akhir");
