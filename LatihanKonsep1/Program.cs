@@ -104,4 +104,26 @@ public class wizard
     {
         enemyjob.Energy -= Damage;
     }
+    public void Heal()
+    {
+        Energy += 5;
+
+        if (Energy >= 100)
+        {
+            Console.WriteLine("Gagal melakukan heal. Energgy sudah mencapai maksimal");
+        }
+        else
+        {
+            if (Energy > 95)
+            {
+                Energy = 100;
+            }
+            else
+            {
+                Energy += 5;
+            }
+            Console.WriteLine($"{Name} berhasil melakukan heal. Energi meningkat menjadi {Energy}");
+        }
+    }
 }
+
